@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body{
+            background-image: url("background\ image.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .container{
+            width: 360px;
+            padding: 33px;
+            text-align: center;
+            background-color: white;
+            margin-left: 33%;
+            margin-top: 200px;
+        }
+        input{
+            width: 270px;
+            padding: 8px;
+            border: 2px solid black;
+            font-size: 19px;
+            outline: none;
+            
+        }
+        button{
+            width: 60px;
+            height: 41px;
+            background-color: red;
+            color: white;
+            border-radius: 2px;
+            font-size: 19px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+        .text ul{
+            position: relative;
+            background-color: white;
+            font-size: 19px;
+            text-align: left;
+            border: 2px solid black;
+            width: 340px;
+            padding: 8px;
+            
+        }
+        .text ul i{
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+        }
+        /* Now we have to make our job portal responsive*/
+        @media(max-width:460px){
+            .container{
+                grid-column: 1/span 1;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 400px;
+                width: 370px;
+               }
+            body{
+                background-image: url("background\ image.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+            }
+           }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Skills</h1>
+        <div class="inputs">
+            <input type="text" placeholder="Enter your skills here:" id="inp">
+            <button onclick="Add()">Add</button>
+        </div>
+        <div class="text">
+
+        </div>
+    </div>
+    <script>
+        let inputs = document.getElementById("inp");
+        let text = document.querySelector(".text");
+
+        function Add(){
+             if(inputs.value == ""){
+                alert("Please Enter Task")
+             }else{
+                let newEle = document.createElement("ul");
+                newEle.innerHTML=`${inputs.value} <i class="fa-solid fa-trash"></i>`;
+                text.appendChild(newEle);
+                inputs.value="";
+                newEle.querySelector("i").addEventListener("click" , remove);
+                function remove(){
+                newEle.remove()
+           }
+       }
+   }
+    </script>
+</body>
+</html>
